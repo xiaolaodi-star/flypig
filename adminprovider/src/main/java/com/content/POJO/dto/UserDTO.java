@@ -1,10 +1,9 @@
-package com.content.POJO;
+package com.content.POJO.dto;
 
 import lombok.Data;
 
 @Data
 public class UserDTO {
-    private int id;
     private String name;
-    private String status;
+    private String password;
 }

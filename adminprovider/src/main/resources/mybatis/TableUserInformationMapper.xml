@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.content.mapper.TableUserInformationMapper">
+    <sql id="baseSql">
+        id,name,sex,user_birthday,create_time,update_time,last_login_time,login_status,user_level,emailaddress,description,password
+    </sql>
+    <resultMap id="baseResultMap" type="com.content.POJO.DOProject.TableUserInformationDO">
+        <id column="id" property="id" jdbcType="INTEGER" javaType="int"></id>
+        <result column="name" property="name" jdbcType="VARCHAR" javaType="string"></result>
+        <result column="sex" property="sex" jdbcType="VARCHAR" javaType="string"></result>
+        <result column="user_birthday" property="userBirthday" jdbcType="DATE" javaType="java.util.Date"></result>
+        <result column="create_time" property="createTime" jdbcType="DATE" javaType="java.util.Date"></result>
+        <result column="update_time" property="updateTime" jdbcType="DATE" javaType="java.util.Date"></result>
+        <result column="last_login_time" property="lastLoginTime" jdbcType="DATE" javaType="java.util.Date"></result>
+        <result column="login_status" property="loginStatus" jdbcType="VARCHAR" javaType="string"></result>
+        <result column="user_level" property="userLevel" jdbcType="VARCHAR" javaType="string"></result>
+        <result column="emailaddress" property="emailAddress" jdbcType="VARCHAR" javaType="string"></result>
+        <result column="description" property="description" jdbcType="LONGVARCHAR" javaType="string"></result>
+        <result column="password" property="password" jdbcType="VARCHAR" javaType="string"></result>
+    </resultMap>
+    <select id="getUserPassord" resultMap="baseResultMap">
+        select <include refid="baseSql"></include> from table_user_information
+        where name = #{name,jdbcType=VARCHAR} and password=#{password,jdbcType=VARCHAR}
+    </select>
+    <insert id="insertResult">
+        insert into table_user_information (<include refid="baseSql">
+    </include>) values (
+        name = #{name,jdbcType=VARCHAR},
+        sex=#{sex,jdbcType=VARCHAR},
+        user_birthday=#{userBirthday,jdbcType=TIMESTAMP}
+        create_time=#{createTime,jdbcType=TIMESTAMP},
+        update_time=#{updateTime,jdbcType=TIMESTAMP},
+        last_login_time=#{lastLoginTime,jdbcType=TIMESTAMP},
+        login_status=#{loginStatus,jdbcType=VARCHAR},
+        user_level=#{userLevel,jdbcType=VARCHAR},
+        emailaddress=#{emailAddress,jdbcType=VARCHAR},
+        description=#{description,jdbcType=LONGVARCHAR},
+        password=#{password,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <update id="updateResult">
+        update table_user_information
+        <set>
+            1=1
+            <if test="name != null">
+                name=#{name,jdbcType=VARCHAR}
+            </if>
+            <if test="password !=null">
+                and password=#{password,jdbcType=VARCHAR}
+            </if>
+            <if test="sex !=null">
+                and sex=#{sex,jdbcType=VARCHAR}
+            </if>
+            <if test="userBirthday!=null">
+                and user_birthday=#{userBirthday,jdbcType=DATE}
+            </if>
+            <if test="createTime!=null">
+                and create_time=#{createTime,jdbcType=DATE}
+            </if>
+            <if test="updateTime!=null">
+                and update_time=#{updateTime,jdbcType=DATE}
+            </if>
+            <if test="lastLoginTime!=null">
+                and last_login_time=#{lastLoginTime,jdbcType=DATE}
+            </if>
+            <if test="loginStatus!=null">
+                and login_status=#{loginStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="userLevel!=null">
+                and user_level=#{userLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="emailAddress!=null">
+                and emailaddress=#{emailAddress,jdbcType=VARCHAR}
+            </if>
+            <if test="description!=null">
+                and description=#{description,jdbcType=LONGVARCHAR}
+            </if>
+        </set>
+    </update>
+
+    <delete id="deleteResult">
+        delete from table_user_information
+        where
+        1=1
+        <if test="name != null">
+            name=#{name,jdbcType=VARCHAR}
+        </if>
+        <if test="id != null">
+            id=#{id,jdbcType=INTEGER}
+        </if>
+    </delete>
+
+    <select id="selectUser" resultMap="baseResultMap">
+        select <include refid="baseSql"></include> from table_user_information
+        where name = #{name} and password=#{password}
+        <if test="sex!=null">
+            and sex=#{sex}
+        </if>
+        <if test="userBirthday!=null">
+            and user_birthday=#{userBirthday}
+        </if>
+        <if test="createTime!=null">
+            and create_time=#{createTime}
+        </if>
+        <if test="updateTime!=null">
+            and update_time=#{updateTime}
+        </if>
+        <if test="lastLoginTime!=null">
+            and last_login_time=#{lastLoginTime}
+        </if>
+        <if test="loginStatus!=null">
+            and login_status=#{loginStatus}
+        </if>
+        <if test="userLevel!=null">
+            and user_level=#{userLevel}
+        </if>
+        <if test="emailAddress!=null">
+            and emailaddress=#{emailAddress}
+        </if>
+        <if test="description!=null">
+            and description=#{description}
+        </if>
+    </select>
+</mapper>

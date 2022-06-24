@@ -1,10 +1,9 @@
 package com.common.filter;
 
-import com.content.POJO.UserDTO;
+import com.content.POJO.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
 
-import javax.naming.event.ObjectChangeListener;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +33,7 @@ public class FlyPigFilter implements Filter {
         passUrl.add("/css");
         passUrl.add("/js");
         passUrl.add("/image");
+        passUrl.add("/login");
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper(httpResponse);
@@ -43,8 +43,14 @@ public class FlyPigFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         }
         else {
-            Object user=request.getSession().getAttribute("user");
-            if(user!=null){
+            Object username=request.getSession().getAttribute("username");
+            Object password=request.getSession().getAttribute("password");
+            if(username!=null||
+            password!=null){
+                UserDTO userDTO=new UserDTO();
+                userDTO.setName(username.toString());
+                userDTO.setPassword(password.toString());
+                userDTOList.add(userDTO);
                 filterChain.doFilter(servletRequest,servletResponse);
             }else {
                 log.info("用户未进行登录");

@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>系统登录</title>
-    <link rel="icon" href="javascript:;">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{static/css/style.css}">
+    <link rel="shortcut icon" th:href="@{/static/image/web.ico}"/>
 </head>
 <body>
     <form action="/login" method="post">
-        name:<input name="name">
-        password:<input name="password">
-        <input type="submit" value="提交">
+        <div class="outer_box">
+            <div class="inner_box">
+                <div class="left_label"></div>
+                <div class="center_form">
+                    <p class="title"><span>私 人 网 站 登 录 页 面</span></p>
+                    <p><input type="text" name="name" placeholder="User Name"></p>
+                    <p><input type="text" name="password" placeholder="Password"></p>
+                    <div class="chk">
+                        <span><input type="checkbox" id="dd">Remember me?</span><span>Forgot password?</span>
+                    </div>
+                </div>
+                <div class="right_label"></div>
+                <div class="signIn_btn">
+                    <input type="submit" value="SIGN IN">
+                </div>
+            </div>
+        </div>
     </form>
 </body>
 </html>

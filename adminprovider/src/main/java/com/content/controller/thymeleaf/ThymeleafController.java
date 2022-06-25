@@ -28,4 +28,9 @@ public class ThymeleafController {
         ModelAndView modelAndView=new ModelAndView("/404page");
         return modelAndView;
     }
+    @RequestMapping(value = "/favicon.ico")
+    public ModelAndView getIcon(){
+        ModelAndView modelAndView = new ModelAndView();
+        return modelAndView;
+    }
 }

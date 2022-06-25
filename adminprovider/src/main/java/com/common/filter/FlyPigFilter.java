@@ -30,16 +30,20 @@ public class FlyPigFilter implements Filter {
 //        passUrl.add("/");
         passUrl.add("/Index");
         passUrl.add("/favicon.ico");
-        passUrl.add("/css");
-        passUrl.add("/js");
-        passUrl.add("/image");
+        passUrl.add("/css/");
+        passUrl.add("/js/");
+        passUrl.add("/image/");
         passUrl.add("/login");
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper(httpResponse);
         String requestURL= request.getRequestURI();
         log.info("请求路径：{}",requestURL);
-        if(passUrl.contains(requestURL)){
+        boolean pass=false;
+        for (String uri:passUrl) {
+            if (requestURL.contains(uri)){pass=true;}
+        }
+        if(pass){
             filterChain.doFilter(servletRequest, servletResponse);
         }
         else {

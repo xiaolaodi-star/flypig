@@ -2,6 +2,8 @@ package com.common.errorcode;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 结果构建{返回体封装类}
  *
@@ -9,7 +11,7 @@ import lombok.Data;
  * @date 2022/06/09
  */
 @Data
-public class ResultBuild {
+public class ResultBuild implements Serializable {
     private Integer code;
     private String message;
     private Object data;

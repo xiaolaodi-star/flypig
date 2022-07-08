@@ -10,6 +10,9 @@ package com.common.errorcode;
 public enum ErrorCode {
     SUCCESS(0000,"处理成功"),
     PARAM_IS_INVALID(1001,"缺少必需参数"),
+    NULL_POINT(1002,"空指针异常"),
+    NOT_SUPPORT(1003,"请求方法不支持"),
+    E_ARITHMETIC(1004,"算数运算异常"),
     FALSE(9999,"处理失败");
     private Integer code;
     private String message;

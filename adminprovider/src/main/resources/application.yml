@@ -15,6 +15,7 @@ spring:
     servlet:
       content-type: text/html
     cache: false
+
 mybatis:
   mapper-locations:
     - classpath:mybatis/*.xml

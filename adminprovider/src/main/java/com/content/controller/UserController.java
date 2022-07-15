@@ -7,18 +7,21 @@ import com.mysql.cj.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
-@RestController
+@Controller
 @Slf4j
 public class UserController {
     @Autowired
     private UserLoginService userLoginService;
     @ResultBody
     @RequestMapping("/login")
+    @ResponseBody
     public String index(UserLoginRequestVO requestVO, HttpServletRequest request){
         log.info("用户登录:{}",requestVO.toString());
         if(StringUtils.isNullOrEmpty(requestVO.getName())||

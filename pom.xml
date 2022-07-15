@@ -178,6 +178,11 @@
             <artifactId>commons-logging</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.7</version>
+        </dependency>
     </dependencies>
     <!--    spring cloud-->
     <dependencyManagement>

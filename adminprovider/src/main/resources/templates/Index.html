@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <title>系统登录</title>
@@ -7,9 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{static/css/style.css}">
     <link rel="shortcut icon" th:href="@{/static/image/web.ico}"/>
+    <link rel="stylesheet" th:href="@{/static/css/bootstrap.css}">
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script th:src="@{/static/js/bootstrap.min.js}"></script>
 </head>
 <body>
-    <form action="/login" method="post">
+    <form action="/login" method="post" target="form">
         <div class="outer_box">
             <div class="inner_box">
                 <div class="left_label"></div>
@@ -31,11 +34,11 @@
     <iframe name="form" id="form" style="display:none"></iframe>
 </body>
 <script>
+    $("#submit").click();
     $("#form").load(function(){
-        var text = $(this).contents().find("body").text(); //获取到的是json的字符串
-        var j = $.parseJSON(text);  //json字符串转换成json对象
-        console.log(j)
-
+        var text = $(this).contents().find("body").text();
+        alert(text);
+        window.location.replace(text);
     })
 </script>
 </html>

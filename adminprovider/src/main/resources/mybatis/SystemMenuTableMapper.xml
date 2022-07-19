@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.content.mapper.SystemMenuTable">
+    <sql id="base">
+        id,icon,name,view,parent_id,type,states
+    </sql>
+    <resultMap id="baseresult" type="com.content.POJO.DOProject.SystemMenuTableDO">
+        <id column="id" property="id" jdbcType="INTEGER" javaType="int"></id>
+        <result column="icon" property="icon" jdbcType="VARCHAR" javaType="string"></result>
+        <result column="name" property="name" jdbcType="VARCHAR" javaType="string"/>
+        <result column="view" property="view" jdbcType="VARCHAR" javaType="string"/>
+        <result column="parent_id" property="parentId" javaType="string" jdbcType="VARCHAR"/>
+        <result column="type" property="parentId" jdbcType="VARCHAR" javaType="string"/>
+        <result column="states" property="states" jdbcType="VARCHAR" javaType="string"/>
+    </resultMap>
+    <insert id="insertSingleSystemMenu">
+        insert into system_menu_table
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id!=null">
+                    id,
+                </if>
+                <if test="icon!=null">
+                    icon,
+                </if>
+                <if test="name!=null">
+                    name,
+                </if>
+                <if test="view!=null">
+                    view,
+                </if>
+                <if test="parentId!=null">
+                    parent_id,
+                </if>
+                <if test="type!=null">
+                    type,
+                </if>
+                <if test="states!=null">
+                    states,
+                </if>
+            </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id!=null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="icon!=null">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="name!=null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="view!=null">
+                #{view,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId!=null">
+                #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="type!=null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="states!=null">
+                #{states,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateSingleSystemMenu" parameterType="com.content.POJO.DOProject.SystemMenuTableDO">
+        update system_menu_table
+            <set>
+
+                <if test="icon!=null">
+                    icon=#{icon,jdbcType=VARCHAR},
+                </if>
+                <if test="name!=null">
+                    name=#{name,jdbcType=VARCHAR},
+                </if>
+                <if test="view!=null">
+                    view=#{view,jdbcType=VARCHAR},
+                </if>
+                <if test="parentId!=null">
+                    parent_id=#{parentId,jdbcType=VARCHAR},
+                </if>
+                <if test="type!=null">
+                    type=#{type,jdbcType=VARCHAR},
+                </if>
+                <if test="states!=null">
+                    states=#{states,jdbcType=VARCHAR},
+                </if>
+            </set>
+        where id=#{id}
+    </update>
+    <delete id="deleteSingleSystemMenu">
+        delete from system_menu_table
+        where identity =#{id}
+    </delete>
+    <select id="selectAll" resultType="com.content.POJO.DOProject.SystemMenuTableDO">
+        select
+        <include refid="base">
+        </include>
+        from system_menu_table
+        <trim prefix="where" prefixOverrides="AND|OR">
+            <if test="id!=0">
+                AND id=#{id}
+            </if>
+            <if test="icon!=null">
+                AND icon=#{icon,jdbcType=VARCHAR}
+            </if>
+            <if test="name!=null">
+                AND name=#{name,jdbcType=VARCHAR}
+            </if>
+            <if test="view!=null">
+                AND view=#{view,jdbcType=VARCHAR}
+            </if>
+            <if test="parentId!=null">
+                AND parent_id=#{parentId,jdbcType=VARCHAR}
+            </if>
+            <if test="type!=null">
+                AND type=#{type,jdbcType=VARCHAR}
+            </if>
+            <if test="states!=null">
+                AND states=#{states,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </select>
+</mapper>

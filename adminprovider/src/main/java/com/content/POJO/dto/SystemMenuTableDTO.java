@@ -8,7 +8,7 @@ public class SystemMenuTableDTO {
     private String icon;
     private String name;
     private String view;
-    private String parentId;
+    private int parentId;
     private String type;
     private String states;
 }

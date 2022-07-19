@@ -80,3 +80,13 @@ create table words
     author        varchar(255) null
 );
 
+CREATE TABLE `system_menu_table` (
+                                     `id` int NOT NULL,
+                                     `icon` varchar(255) DEFAULT NULL COMMENT '图标',
+                                     `name` varchar(255) DEFAULT NULL COMMENT '中文简介',
+                                     `view` varchar(255) DEFAULT NULL COMMENT '可见：yes:no',
+                                     `parent_id` int DEFAULT NULL COMMENT '父节点id',
+                                     `type` varchar(255) DEFAULT NULL COMMENT '菜单类型menu：api',
+                                     `states` varchar(255) DEFAULT NULL COMMENT '是否外部展示',
+                                     PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

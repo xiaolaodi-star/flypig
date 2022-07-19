@@ -1,9 +1,9 @@
-package com.content.POJO.DOProject;
+package com.content.POJO.vo;
 
 import lombok.Data;
 
 @Data
-public class SystemMenuTableDO {
+public class SystemMenuRequestVO {
     private int id;
     private String icon;
     private String name;

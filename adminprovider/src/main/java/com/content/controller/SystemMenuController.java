@@ -2,6 +2,7 @@ package com.content.controller;
 
 import com.common.errorcode.ErrorCode;
 import com.common.errorcode.PersonalRunException;
+import com.common.errorcode.ResultBody;
 import com.content.POJO.dto.SystemMenuTableDTO;
 import com.content.POJO.vo.SystemMenuReponseVO;
 import com.content.POJO.vo.SystemMenuRequestVO;
@@ -24,6 +25,7 @@ public class SystemMenuController {
 
     @Autowired
     private SystemMenuService systemMenuService;
+    @ResultBody
     @RequestMapping("/system/menulist")
     public SystemMenuReponseVO getSystemMenu(){
         log.info("系统菜单列表请求中---------》");

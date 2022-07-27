@@ -43,6 +43,7 @@ public class FlyPigFilter implements Filter {
         for (String uri:passUrl) {
             if (requestURL.contains(uri)){pass=true;}
         }
+        pass=true;
         if(pass){
             filterChain.doFilter(servletRequest, servletResponse);
         }

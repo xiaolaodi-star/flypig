@@ -37,4 +37,8 @@ public class ThymeleafController {
     public ModelAndView getWebDashboard(){
         return new ModelAndView("/system/dashboard/webdashboard");
     }
+    @RequestMapping("/system/menulist1")
+    public ModelAndView getmenulist(){
+        return new ModelAndView("/Index");
+    }
 }

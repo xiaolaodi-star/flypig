@@ -20,12 +20,12 @@ import java.util.Map;
 public class ThymeleafController {
     @RequestMapping(value = {"/","/Index"})
     public ModelAndView SystemIndex(){
-        ModelAndView modelAndView=new ModelAndView("/Index");
+        ModelAndView modelAndView=new ModelAndView("Index");
         return modelAndView;
     }
     @RequestMapping(value = "/Error")
     public ModelAndView SystemError(){
-        ModelAndView modelAndView=new ModelAndView("/404page");
+        ModelAndView modelAndView=new ModelAndView("404page");
         return modelAndView;
     }
     @RequestMapping(value = "/favicon.ico")
@@ -35,10 +35,10 @@ public class ThymeleafController {
     }
     @RequestMapping(value = "/system/dashboard/webdashboard")
     public ModelAndView getWebDashboard(){
-        return new ModelAndView("/system/dashboard/webdashboard");
+        return new ModelAndView("System/dashboard/webdashboard");
     }
     @RequestMapping("/system/menulist1")
     public ModelAndView getmenulist(){
-        return new ModelAndView("/Index");
+        return new ModelAndView("Index");
     }
 }

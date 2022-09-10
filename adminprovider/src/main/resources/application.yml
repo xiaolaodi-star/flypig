@@ -4,13 +4,13 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/personalweb
-    username: root
-    password: zsh980521
+    username: zhush
+    password: NtMS7M72tS48bpwM
   thymeleaf:
     prefix: classpath:/templates/
     enabled: true
     suffix: .html
-    mode: HTML
+    mode: LEGACYHTML5
     encoding: UTF-8
     servlet:
       content-type: text/html

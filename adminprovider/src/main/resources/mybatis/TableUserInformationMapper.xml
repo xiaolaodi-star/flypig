@@ -21,7 +21,7 @@
     </resultMap>
     <select id="getUserPassord" resultMap="baseResultMap">
         select <include refid="baseSql"></include> from table_user_information
-        where name = #{name,jdbcType=VARCHAR} and password=#{password,jdbcType=VARCHAR}
+        where `name` = #{name,jdbcType=VARCHAR} and `password`=#{password,jdbcType=VARCHAR}
     </select>
     <insert id="insertResult">
         insert into table_user_information (<include refid="baseSql">

@@ -1,0 +1,25 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: zhush
+      password: 980521
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/personalweb
+    username: root
+    password: zsh980521
+logging:
+  file:
+    path: E:/zhush/LOG/provider
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    healthcheck:
+      enabled: true
+  instance:
+    hostname: localhost

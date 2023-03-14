@@ -1,6 +1,8 @@
 server:
   port: 8001
 spring:
+  application:
+    name: provider
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/personalweb
@@ -19,3 +21,13 @@ spring:
 mybatis:
   mapper-locations:
     - classpath:mybatis/*.xml
+logging:
+  file:
+    path: E:/zhush/LOG
+eureka:
+  client:
+    service-url:
+      defaultZone: http://zhush:980521@127.0.0.1:8082/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true

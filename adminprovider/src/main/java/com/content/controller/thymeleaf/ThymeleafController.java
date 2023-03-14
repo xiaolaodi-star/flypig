@@ -31,7 +31,6 @@ public class ThymeleafController {
     @RequestMapping(value = "/favicon.ico")
     public void getIcon(){
         ModelAndView modelAndView = new ModelAndView();
-//        return modelAndView;
     }
     @RequestMapping(value = "/system/dashboard/webdashboard")
     public ModelAndView getWebDashboard(){

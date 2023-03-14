@@ -10,30 +10,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>adminprovider</artifactId>
-
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-jar-plugin</artifactId>-->
-<!--                <version>3.0.2</version>-->
-<!--                <configuration>-->
-<!--                    <archive>-->
-<!--                        <manifest>-->
-<!--                            <addClasspath>true</addClasspath>-->
-<!--                            <mainClass>com.ProviderApplication</mainClass> &lt;!&ndash; 此处为主入口&ndash;&gt;-->
-<!--                        </manifest>-->
-<!--                    </archive>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-
-<!--    </build>-->
-
+    <dependencies>
+        <!-- eureka -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+    </dependencies>
     <build>
         <finalName>provider</finalName><!-- 导出jar的名字 -->
         <plugins>
@@ -41,11 +28,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.6.3</version>
+                <configuration>
+                    <mainClass>com.ProviderApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
         <resources>
             <resource>
-                <directory>src/main/resources </directory>
+                <directory>src/main/resources</directory>
             </resource>
         </resources>
     </build>

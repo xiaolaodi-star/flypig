@@ -25,9 +25,7 @@ public class FlyPigFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-//        String[] passUrl=new String[]{"/","/index"};
         List<String> passUrl=new ArrayList<String>();
-//        passUrl.add("/");
         passUrl.add("/Index");
         passUrl.add("/favicon.ico");
         passUrl.add("/css/");

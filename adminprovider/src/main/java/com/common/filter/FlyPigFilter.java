@@ -20,6 +20,7 @@ public class FlyPigFilter implements Filter {
     private List<UserDTO> userDTOList=new ArrayList<>();
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
+        log.info("过滤器初始化");
         Filter.super.init(filterConfig);
     }
 
@@ -32,34 +33,42 @@ public class FlyPigFilter implements Filter {
         passUrl.add("/js/");
         passUrl.add("/image/");
         passUrl.add("/login");
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletRequest request= (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper(httpResponse);
-        String requestURL= request.getRequestURI();
-        log.info("请求路径：{}",requestURL);
-        boolean pass=false;
-        for (String uri:passUrl) {
-            if (requestURL.contains(uri)){pass=true;}
-        }
-        pass=true;
-        if(pass){
-            filterChain.doFilter(servletRequest, servletResponse);
-        }
-        else {
-            Object username=request.getSession().getAttribute("username");
-            Object password=request.getSession().getAttribute("password");
-            if(username!=null||
-            password!=null){
-                UserDTO userDTO=new UserDTO();
-                userDTO.setName(username.toString());
-                userDTO.setPassword(password.toString());
-                userDTOList.add(userDTO);
-                filterChain.doFilter(servletRequest,servletResponse);
-            }else {
-                log.info("用户未进行登录");
-                wrapper.sendRedirect("/Index");
-            }
-        }
+//        采用双token机制
+
+
+
+
+//        HttpServletRequest request = (HttpServletRequest) servletRequest;
+//        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+//        HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper(httpResponse);
+//        String requestURL= request.getRequestURI();
+//        log.info("请求路径：{}",requestURL);
+//        boolean pass=false;
+//        for (String uri:passUrl) {
+//            if (requestURL.contains(uri)){pass=true;}
+//        }
+//        pass=true;
+//        if(pass){
+//            filterChain.doFilter(servletRequest, servletResponse);
+//        }
+//        else {
+//            Object username=request.getSession().getAttribute("username");
+//            Object password=request.getSession().getAttribute("password");
+//            if(username!=null||
+//            password!=null){
+//                UserDTO userDTO=new UserDTO();
+//                userDTO.setName(username.toString());
+//                userDTO.setPassword(password.toString());
+//                userDTOList.add(userDTO);
+//                filterChain.doFilter(servletRequest,servletResponse);
+//            }else {
+//                log.info("用户未进行登录");
+//                wrapper.sendRedirect("/Index");
+//            }
+//        }
     }
     @Override
     public void destroy() {

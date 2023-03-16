@@ -6,6 +6,7 @@ import org.springframework.core.annotation.Order;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
@@ -37,15 +38,10 @@ public class FlyPigFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper(httpResponse);
 //        采用双token机制
+        Cookie[] cookies=request.getCookies();
 
-
-
-
-//        HttpServletRequest request = (HttpServletRequest) servletRequest;
-//        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
-//        HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper(httpResponse);
-//        String requestURL= request.getRequestURI();
-//        log.info("请求路径：{}",requestURL);
+        String requestURL= request.getRequestURI();
+        log.info("请求路径：{}",requestURL);
 //        boolean pass=false;
 //        for (String uri:passUrl) {
 //            if (requestURL.contains(uri)){pass=true;}
@@ -69,6 +65,7 @@ public class FlyPigFilter implements Filter {
 //                wrapper.sendRedirect("/Index");
 //            }
 //        }
+        filterChain.doFilter(servletRequest,servletResponse);
     }
     @Override
     public void destroy() {

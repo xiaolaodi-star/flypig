@@ -12,7 +12,8 @@ import java.util.Map;
 /**
  * token的生成与验证函数
  *
- * @author Administrator
+ * @author littledotboy
+ * @date 2023/03/15
  */
 public class TokenUtil {
     private static final long expireTime=30*60*100000L;

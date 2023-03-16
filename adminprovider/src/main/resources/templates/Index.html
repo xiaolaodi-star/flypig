@@ -38,6 +38,7 @@
     $("#submit").click();
     $("#form").load(function(){
         var text = $(this).contents().find("body").text();
+        console.dir($(this).contents());
         alert(text);
         window.location.replace(text);
     })
